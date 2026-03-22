@@ -1,0 +1,25 @@
+2025-12-28 15:48:15,261 INFO: Starting Flask server...
+2025-12-28 15:48:15,271 INFO: b" * Serving Flask app 'app'"
+2025-12-28 15:48:15,273 INFO: b' * Debug mode: off'
+2025-12-28 15:48:15,293 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-28 15:48:15,293 INFO: [33mPress CTRL+C to quit[0m
+2025-12-29 13:07:39,801 INFO: Starting Flask server...
+2025-12-29 13:07:39,805 INFO: b" * Serving Flask app 'app'"
+2025-12-29 13:07:39,805 INFO: b' * Debug mode: off'
+2025-12-29 13:07:39,834 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-29 13:07:39,834 INFO: [33mPress CTRL+C to quit[0m
+2025-12-29 13:07:41,698 INFO: 127.0.0.1 - - [29/Dec/2025 13:07:41] "GET / HTTP/1.1" 200 -
+2025-12-29 13:07:42,608 INFO: 127.0.0.1 - - [29/Dec/2025 13:07:42] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-12-29 13:07:42,618 INFO: 127.0.0.1 - - [29/Dec/2025 13:07:42] "GET /static/js/script.js HTTP/1.1" 200 -
+2025-12-29 13:07:42,778 INFO: 127.0.0.1 - - [29/Dec/2025 13:07:42] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-12-29 13:07:55,311 INFO: Starting Flask server...
+2025-12-29 13:07:55,319 INFO: b" * Serving Flask app 'app'"
+2025-12-29 13:07:55,319 INFO: b' * Debug mode: off'
+2025-12-29 13:07:55,343 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-29 13:07:55,343 INFO: [33mPress CTRL+C to quit[0m
+2025-12-29 13:07:57,075 INFO: 127.0.0.1 - - [29/Dec/2025 13:07:57] "GET / HTTP/1.1" 200 -
+2025-12-29 13:07:57,502 INFO: 127.0.0.1 - - [29/Dec/2025 13:07:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-29 13:07:57,519 INFO: 127.0.0.1 - - [29/Dec/2025 13:07:57] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
