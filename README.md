@@ -1,49 +1,49 @@
-# Report Merger (Word文档合并工具)
+# Report Merger (Word Document Merging Tool)
 
-这是一个基于 Flask 的轻量级 Web 应用，专门用于将多个 Word 文档 (.docx) 自动合并到一个主模板中。通过识别模板中的特定占位符，应用能够将分散的报告内容无缝组装，并保持原有的格式和层级结构。
+This is a lightweight web application built with Flask, specifically designed to automatically merge multiple Word documents (.docx) into a master template. By recognizing specific placeholders in the template, the application can seamlessly assemble scattered report content while preserving the original formatting and hierarchical structure.
 
-## ✨ 核心特性
+## ✨ Key Features
 
-- **模板驱动占位符替换**：在主文档中使用 `{{文件名}}`（例如 `{{测试报告}}`）作为占位符，应用会自动寻找并插入对应的 `测试报告.docx`。
-- **完美保持原格式 (w:altChunk)**：底层使用 OpenXML 的 `altChunk` 特性直接嵌入文档流，意味着被合并的子文档中的表格、图片、复杂排版等都会被 100% 完美保留原生格式。
-- **智能标题层级自动推断**：在将子报告插入模板时，工具会向上扫描模板中的临近标题层级，并自动为插入模块生成对应层级的子标题，确保最终文档的大纲结构严密连贯。
-- **缺失文件友好提示**：如果模板中引用的某个占位符（子报告）未被上传，应用会自动在对应位置标注红色的 **“待补充”** 字样，方便后续人工排查。
-- **一键式 Web 交互**：前端提供直观的操作界面，支持一次性上传模板文件及批量上传所有依赖的子报告，点击处理即可自动下载合并完成的最终报告。
-- **独立打包支持**：兼容 PyInstaller 等打包工具，可打包成单体 `.exe` 文件（如 `ReportAuto.exe`），无需安装 Python 环境即可在任何 Windows 机器上双击运行并自动弹出浏览器窗口。
+- **Template-driven placeholder replacement**：Use {{filename}} (e.g., {{Test Report}}) as placeholders in the main document. The application will automatically locate and insert the corresponding file (e.g., Test Report.docx).
+- **Perfect format preservation (w:altChunk)**：Leveraging OpenXML’s altChunk feature to directly embed document streams, ensuring that tables, images, and complex layouts in sub-documents are preserved 100% in their original format.
+- **Intelligent heading level inference**：When inserting sub-reports into the template, the tool scans nearby headings in the template and automatically generates corresponding sub-headings, ensuring a well-structured and consistent document outline.
+- **Friendly missing file alerts**：If a placeholder (sub-report) referenced in the template is not uploaded, the application will mark the position with a red “To Be Added” label for easy manual follow-up.
+- **One-click web interaction**：The front end provides an intuitive interface that supports uploading the template and all dependent sub-reports in batch. With one click, the merged final report is generated and downloaded automatically.
+- **Standalone packaging support**：Compatible with packaging tools like PyInstaller. The application can be bundled into a single .exe file (e.g., ReportAuto.exe), allowing it to run on any Windows machine without requiring a Python environment. Double-click to launch and automatically open in a browser.
 
-## 🛠️ 技术栈
+## 🛠️ Tech Stack
 
-- **后端**：Python, Flask, python-docx (用于文档解析和操作), OpenXML
-- **前端**：HTML/CSS/JavaScript (位于 `templates` 和 `static` 目录中)
+- **Backend**：Python, Flask, python-docx (for document parsing and manipulation), OpenXML
+- **Frontend**：HTML/CSS/JavaScript (located in the templates and static directories)
 
-## 🚀 它是如何工作的？
+## 🚀 How It Works？
 
-1. **准备模板**：创建一个主 Word 文档，在需要插入子报告的地方单独占一行输入 `{{子报告名称}}`。
-2. **准备子文档**：确保你有对应名称的 Word 文件（如 `子报告名称.docx`）。
-3. **上传并合并**：在网页端分别选中模板和所有子文档上传，点击合并。
-4. **底层处理逻辑**：
-   - 解析模板，提取所有的 `{{xyz}}` 占位符。
-   - 读取对于的子文件二进制数据。
-   - 创建 OpenXML `Part` 并在模板中生成关联关系关系。
-   - 插入 `w:altChunk` 标签，实现原生级别的文档融合。
-   - 最后自动清理占位符。
+1. **Prepare the template**：Create a master Word document and insert placeholders like {{SubReportName}} on separate lines where sub-reports should be included.
+2. **Prepare sub-documents**：Ensure you have corresponding Word files (e.g., SubReportName.docx).
+3. **Upload and merge**：Upload the template and all sub-documents via the web interface, then click merge.
+4. **Underlying processing logic**：
+   - Parse the template and extract all {{xyz}} placeholders.
+   - Read the binary data of the corresponding sub-files.
+   - Create OpenXML Parts and establish relationships within the template.
+   - Insert w:altChunk tags to achieve native-level document merging.
+   - Finally, clean up all placeholders automatically.
 
-## ⚙️ 本地运行指南
+## ⚙️ Local Run Guide
 
-1. 安装依赖库：
+1. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-2. 运行应用：
+2. Run the application:：
    ```bash
    python app.py
    ```
-3. 应用会自动启动本地服务器（默认运行在 `http://127.0.0.1:5000`），并在1.5秒后自动打开系统默认浏览器。
+3. The application will automatically start a local server (default at http://127.0.0.1:5000) and open the default system browser after 1.5 seconds.
 
-## 📦 打包为独立可执行文件
+## 📦 Packaging as a Standalone Executable
 
-项目中已经包含了相关的配置，您可以使用以下命令将其打包成完整的可执行程序：
+The project already includes the necessary configuration. You can package it into a standalone executable using the following command:
 ```bash
 pyinstaller ReportAuto.spec
 ```
-生成的可执行文件可在 `dist` 目录中找到。
+The generated executable file can be found in the dist directory.
